@@ -345,7 +345,7 @@ class SRU_Compute_GPU(Function):
         if cls._STREAM is not None:
             return
 
-        prog = Program(SRU_CODE.encode(), 'sru_prog.cu'.encode())
+        prog = Program(SRU_CODE, 'sru_prog.cu')
         ptx = prog.compile()
         mod = function.Module()
         mod.load(bytes(ptx.encode()))
